@@ -31,6 +31,10 @@
         <a href="#quick-links">快捷入口</a>
         <a href="#news">最新资讯</a>
         <a href="#materials">学习资料</a>
+        <a href="#quiz-section">在线刷题</a>
+        <a href="#checkin-section">每日打卡</a>
+        <a href="#daily-section">每日一题</a>
+        <a href="#timer-section">番茄钟</a>
         <a href="#timeline">备考计划</a>
         <a href="#links">官方链接</a>
       </div>
@@ -694,6 +698,122 @@
   </section>
 
   <!-- ==========================================
+       QUIZ SECTION - 在线刷题
+       ========================================== -->
+  <section class="section quiz-section" id="quiz-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">在线刷题</span>
+        <h2 class="section-title">行测模拟练习</h2>
+        <p class="section-subtitle">随机抽取行测真题，练完看解析，实时计分</p>
+      </div>
+      <div class="quiz-container reveal" id="quiz-container"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CHECK-IN SECTION - 每日打卡
+       ========================================== -->
+  <section class="section checkin-section" id="checkin-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">每日打卡</span>
+        <h2 class="section-title">学习进度追踪</h2>
+        <p class="section-subtitle">记录每一天的努力，坚持就是胜利</p>
+      </div>
+      <div class="checkin-grid reveal">
+        <div class="checkin-card">
+          <h3><i class="fa-solid fa-fire" style="color:var(--color-primary)"></i> 今日打卡</h3>
+          <button class="checkin-btn todo" id="checkin-btn">🔥 今日打卡学习</button>
+          <div class="checkin-stats">
+            <div>
+              <span class="stat-number" id="checkin-streak">0</span>
+              <span class="stat-label">连续天数</span>
+            </div>
+            <div>
+              <span class="stat-number" id="checkin-total">0</span>
+              <span class="stat-label">总打卡</span>
+            </div>
+            <div>
+              <span class="stat-number" id="checkin-month">0</span>
+              <span class="stat-label">本月</span>
+            </div>
+          </div>
+        </div>
+        <div class="checkin-card checkin-calendar">
+          <h4 id="cal-title"></h4>
+          <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       DAILY QUESTION SECTION - 每日一题
+       ========================================== -->
+  <section class="section daily-section" id="daily-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">每日一题</span>
+        <h2 class="section-title">考点卡片</h2>
+        <p class="section-subtitle">每天一个考公知识点，碎片时间也能学</p>
+      </div>
+      <div class="daily-card reveal" id="daily-container"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       TIMER SECTION - 番茄钟
+       ========================================== -->
+  <section class="section timer-section" id="timer-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">番茄钟</span>
+        <h2 class="section-title">专注学习计时器</h2>
+        <p class="section-subtitle">25分钟专注 + 5分钟休息，高效备考</p>
+      </div>
+      <div class="timer-container reveal">
+        <div class="timer-mode-tabs">
+          <button class="timer-mode-btn active" data-mode="focus">
+            <i class="fa-solid fa-book-open"></i> 专注学习
+          </button>
+          <button class="timer-mode-btn" data-mode="break">
+            <i class="fa-solid fa-mug-hot"></i> 休息
+          </button>
+        </div>
+        <div class="timer-circle">
+          <svg viewBox="0 0 260 260">
+            <defs>
+              <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#C41E24" />
+                <stop offset="100%" stop-color="#E83A3A" />
+              </linearGradient>
+            </defs>
+            <circle class="bg-circle" cx="130" cy="130" r="120" />
+            <circle class="progress-circle" id="timer-circle" cx="130" cy="130" r="120" />
+          </svg>
+          <div class="timer-display">
+            <div class="time-text" id="timer-display">25:00</div>
+            <div class="timer-label" id="timer-label">专注学习</div>
+          </div>
+        </div>
+        <div class="timer-controls">
+          <button class="timer-ctrl-btn" id="timer-reset" title="重置">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button class="timer-ctrl-btn primary" id="timer-start" title="开始/暂停">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          <button class="timer-ctrl-btn" id="timer-skip" title="跳过" style="display:none"></button>
+        </div>
+        <div class="timer-sessions">
+          今日已完成 <strong id="timer-sessions">0</strong> 个番茄钟 🍅
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
        FOOTER
        ========================================== -->
   <footer class="footer">
@@ -749,5 +869,6 @@
 
   <!-- Custom JS -->
   <script src="js/main.js"></script>
+  <script src="js/features.js"></script>
 </body>
 </html>
