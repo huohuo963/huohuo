@@ -1,6 +1,6 @@
 /* ============================================
    火火考公资料站 - Huohuo CSS
-   Design: Bold Chinese Red + Gold
+   Design: Fire Red + Earth Tones (火土相生)
    ============================================ */
 
 /* --- Fonts --- */
@@ -16,10 +16,22 @@
   --color-gold: #D4A017;
   --color-gold-light: #F0C850;
   --color-gold-dark: #B8860B;
+
+  /* 土色系 (Earth Tones) - 取代原来的蓝色系 */
+  --color-earth-dark: #3E2723;
+  --color-earth: #8B5E3C;
+  --color-earth-light: #A67B5B;
+  --color-earth-gradient: linear-gradient(135deg, #3E2723 0%, #6D4C3A 40%, #8B5E3C 100%);
+  --color-sand: #D4A574;
+  --color-sand-light: #E8D5C4;
+  --color-warm-bg: #F5EBE0;
+  --color-warm-bg-alt: #EDE0D4;
+  --color-warm-section: #F0E6D8;
+
   --color-bg: #FFFDF8;
   --color-bg-alt: #FDF5EC;
-  --color-bg-dark: #1A1A2E;
-  --color-bg-section: #F9F0E6;
+  --color-bg-dark: var(--color-earth-dark);
+  --color-bg-section: var(--color-warm-section);
   --color-text: #2C2C2C;
   --color-text-light: #6B6B6B;
   --color-text-on-dark: #F5F0EB;
@@ -266,7 +278,7 @@ ul { list-style: none; }
   position: relative;
   padding-top: var(--nav-height);
   overflow: hidden;
-  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 40%, #0F3460 100%);
+  background: var(--color-earth-gradient);
 }
 
 .hero::before {
@@ -288,7 +300,7 @@ ul { list-style: none; }
   left: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(212, 160, 23, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(212, 160, 23, 0.1) 0%, transparent 70%);
   border-radius: var(--radius-full);
   pointer-events: none;
 }
@@ -1735,6 +1747,397 @@ ul { list-style: none; }
 
 .timer-sessions strong {
   color: var(--color-primary);
+}
+
+/* ============================================
+   TAB LAYOUT
+   ============================================ */
+.tab-layout-nav {
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 100;
+  background: rgba(245, 235, 224, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(196, 30, 36, 0.1);
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-layout-nav::-webkit-scrollbar { height: 0; }
+
+.tab-layout-nav .container {
+  display: flex;
+  gap: 0;
+  padding: 0 var(--space-md);
+}
+
+.tab-nav-btn {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-nav-btn i {
+  margin-right: 6px;
+  font-size: 0.8rem;
+}
+
+.tab-nav-btn:hover {
+  color: var(--color-primary);
+  background: rgba(196, 30, 36, 0.04);
+}
+
+.tab-nav-btn.active {
+  color: var(--color-primary);
+  font-weight: 700;
+  border-bottom-color: var(--color-primary);
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ============================================
+   FLOATING POMODORO TIMER
+   ============================================ */
+.floating-timer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  display: none;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+  animation: fadeInUp 0.3s ease;
+  transition: var(--transition);
+}
+
+.floating-timer.active {
+  display: flex;
+}
+
+.floating-timer .ft-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.floating-timer .ft-info {
+  flex: 1;
+}
+
+.floating-timer .ft-time {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.floating-timer .ft-label {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.floating-timer .ft-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.floating-timer .ft-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--color-warm-bg-alt);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: var(--transition);
+}
+
+.floating-timer .ft-btn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.floating-timer .ft-btn.ft-close {
+  background: transparent;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.floating-timer .ft-btn.ft-close:hover {
+  color: var(--color-primary);
+  background: transparent;
+}
+
+/* ============================================
+   DASHBOARD (Home Tab)
+   ============================================ */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  max-width: 800px;
+  margin: var(--space-lg) auto 0;
+}
+
+.dash-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.dash-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.15);
+}
+
+.dash-card .dash-number {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--color-gold-light);
+  display: block;
+  line-height: 1.2;
+}
+
+.dash-card .dash-label {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 235, 0.7);
+  margin-top: var(--space-xs);
+}
+
+.dash-card .dash-icon {
+  font-size: 1.5rem;
+  color: var(--color-gold-light);
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================
+   WRONG ANSWER BOOK & ANALYSIS
+   ============================================ */
+.wrongbook-section {
+  background: var(--color-warm-section);
+}
+
+.wrongbook-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.wrong-stat-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.wrong-stat-card .ws-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  display: block;
+}
+
+.wrong-stat-card .ws-label {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin-top: 4px;
+}
+
+.analysis-section {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.analysis-section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-lg);
+}
+
+.analysis-bar-group {
+  margin-bottom: var(--space-md);
+}
+
+.analysis-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.analysis-bar-label .bar-topic {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.analysis-bar-label .bar-pct {
+  font-weight: 700;
+}
+
+.analysis-bar-track {
+  height: 10px;
+  background: var(--color-warm-bg-alt);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.analysis-bar-fill {
+  height: 100%;
+  border-radius: 50px;
+  transition: width 0.8s ease;
+  min-width: 4px;
+}
+
+.analysis-bar-fill.good { background: linear-gradient(90deg, #22C55E, #16A34A); }
+.analysis-bar-fill.warn { background: linear-gradient(90deg, #F59E0B, #D97706); }
+.analysis-bar-fill.bad { background: linear-gradient(90deg, #EF4444, #DC2626); }
+
+.analysis-suggestion {
+  margin-top: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(196, 30, 36, 0.06);
+  border: 1px solid rgba(196, 30, 36, 0.15);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.analysis-suggestion strong {
+  color: var(--color-primary);
+}
+
+.wrong-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.wrong-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+}
+
+.wrong-item .wi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.wrong-item .wi-topic {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(196,30,36,0.08);
+  padding: 2px 10px;
+  border-radius: 50px;
+}
+
+.wrong-item .wi-date {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.wrong-item .wi-question {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.wrong-item .wi-answers {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.wrong-item .wi-your-answer {
+  color: #EF4444;
+}
+
+.wrong-item .wi-correct-answer {
+  color: #22C55E;
+  font-weight: 600;
+}
+
+.wrong-empty {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-light);
+}
+
+.wrong-empty i {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+  display: block;
+  color: var(--color-sand);
+}
+
+/* Update daily card to earth tones */
+.daily-card {
+  background: var(--color-earth-gradient) !important;
+}
+
+/* Update footer */
+.footer {
+  background: var(--color-earth-dark) !important;
+}
+
+/* Timeline */
+.timeline::before {
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-earth)) !important;
+}
+
+.timeline-dot {
+  border-color: var(--color-warm-section) !important;
 }
 
 /* ============================================

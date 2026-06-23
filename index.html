@@ -22,21 +22,20 @@
        ========================================== -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="#hero" class="nav-logo">
+      <a href="#tab-home" class="nav-logo">
         <span class="logo-icon">火</span>
         火火考公
       </a>
       <div class="nav-links">
-        <a href="#hero" class="active">首页</a>
-        <a href="#quick-links">快捷入口</a>
-        <a href="#news">最新资讯</a>
-        <a href="#materials">学习资料</a>
-        <a href="#quiz-section">在线刷题</a>
-        <a href="#checkin-section">每日打卡</a>
-        <a href="#daily-section">每日一题</a>
-        <a href="#timer-section">番茄钟</a>
-        <a href="#timeline">备考计划</a>
-        <a href="#links">官方链接</a>
+        <a href="#tab-home" class="active">首页</a>
+        <a href="#tab-checkin">打卡</a>
+        <a href="#tab-timer">番茄钟</a>
+        <a href="#tab-quiz">刷题</a>
+        <a href="#tab-wrongbook">错题本</a>
+        <a href="#tab-daily">每日一题</a>
+        <a href="#tab-materials">资料</a>
+        <a href="#tab-plan">计划</a>
+        <a href="#tab-links">链接</a>
       </div>
       <button class="nav-toggle" aria-label="菜单">
         <span></span>
@@ -47,771 +46,851 @@
   </nav>
 
   <!-- ==========================================
-       HERO SECTION
+       TAB LAYOUT NAV
        ========================================== -->
-  <section class="hero" id="hero">
-    <div class="hero-particles"></div>
+  <nav class="tab-layout-nav" id="tabNav">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fa-solid fa-fire"></i>
-          2027 吉林省考 · 备考冲刺
+      <button class="tab-nav-btn active" data-tab="tab-home"><i class="fa-solid fa-house"></i> 首页</button>
+      <button class="tab-nav-btn" data-tab="tab-checkin"><i class="fa-solid fa-check"></i> 打卡</button>
+      <button class="tab-nav-btn" data-tab="tab-timer"><i class="fa-solid fa-clock"></i> 番茄钟</button>
+      <button class="tab-nav-btn" data-tab="tab-quiz"><i class="fa-solid fa-pen"></i> 刷题</button>
+      <button class="tab-nav-btn" data-tab="tab-wrongbook"><i class="fa-solid fa-book"></i> 错题本</button>
+      <button class="tab-nav-btn" data-tab="tab-daily"><i class="fa-solid fa-lightbulb"></i> 每日一题</button>
+      <button class="tab-nav-btn" data-tab="tab-materials"><i class="fa-solid fa-folder"></i> 资料</button>
+      <button class="tab-nav-btn" data-tab="tab-plan"><i class="fa-solid fa-road"></i> 计划</button>
+      <button class="tab-nav-btn" data-tab="tab-links"><i class="fa-solid fa-link"></i> 链接</button>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       TAB PANELS
+       ========================================== -->
+
+  <!-- ===== TAB: 首页 ===== -->
+  <div class="tab-panel active" id="tab-home">
+
+    <!-- HERO SECTION (shortened) -->
+    <section class="hero" id="hero">
+      <div class="hero-particles"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <i class="fa-solid fa-fire"></i>
+            2027 吉林省考 · 备考冲刺
+          </div>
+          <h1>
+            火火<span class="highlight">上岸</span><br>
+            一战成"公"
+          </h1>
+          <p>
+            专为 2027 年吉林省考打造的备考资料导航站。汇聚官方资讯、学习资源、真题题库和备考计划，助你高效备考，一举上岸。
+          </p>
+          <div class="hero-buttons">
+            <a href="#materials" class="btn btn-primary">
+              <i class="fa-solid fa-book-open"></i>
+              开始学习
+            </a>
+            <a href="#links" class="btn btn-outline">
+              <i class="fa-solid fa-link"></i>
+              官方入口
+            </a>
+          </div>
         </div>
-        <h1>
-          火火<span class="highlight">上岸</span><br>
-          一战成"公"
-        </h1>
-        <p>
-          专为 2027 年吉林省考打造的备考资料导航站。汇聚官方资讯、学习资源、真题题库和备考计划，助你高效备考，一举上岸。
-        </p>
-        <div class="hero-buttons">
-          <a href="#materials" class="btn btn-primary">
-            <i class="fa-solid fa-book-open"></i>
-            开始学习
+      </div>
+    </section>
+
+    <!-- DASHBOARD GRID -->
+    <section class="section dashboard-section">
+      <div class="container">
+        <div class="dashboard-grid">
+          <div class="dash-card reveal">
+            <div class="dash-icon"><i class="fa-solid fa-check-circle"></i></div>
+            <div class="dash-info">
+              <span class="dash-number" id="dash-checkin">0</span>
+              <span class="dash-label">今日打卡状态</span>
+            </div>
+          </div>
+          <div class="dash-card reveal">
+            <div class="dash-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="dash-info">
+              <span class="dash-number" id="dash-tomato">0</span>
+              <span class="dash-label">今日番茄数</span>
+            </div>
+          </div>
+          <div class="dash-card reveal">
+            <div class="dash-icon"><i class="fa-solid fa-pen"></i></div>
+            <div class="dash-info">
+              <span class="dash-number" id="dash-quiz">0</span>
+              <span class="dash-label">总刷题数</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="section quick-links" id="quick-links">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">快捷入口</span>
+          <h2 class="section-title">一键直达</h2>
+          <p class="section-subtitle">快速访问备考所需的核心模块</p>
+        </div>
+        <div class="quick-links-grid">
+          <div class="quick-link-card reveal" data-target="tab-news">
+            <div class="icon-box"><i class="fa-solid fa-newspaper"></i></div>
+            <h3>最新资讯</h3>
+            <p>吉林省考公告、政策变化、考试动态实时汇总</p>
+          </div>
+          <div class="quick-link-card reveal" data-target="tab-materials">
+            <div class="icon-box"><i class="fa-solid fa-book"></i></div>
+            <h3>学习资料</h3>
+            <p>行测、申论、面试各科系统学习资源</p>
+          </div>
+          <div class="quick-link-card reveal" data-target="tab-plan">
+            <div class="icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+            <h3>备考计划</h3>
+            <p>分阶段备考时间线与每日学习建议</p>
+          </div>
+          <div class="quick-link-card reveal" data-target="tab-links">
+            <div class="icon-box"><i class="fa-solid fa-globe"></i></div>
+            <h3>官方链接</h3>
+            <p>吉林省考官网、人社局等权威渠道</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS SECTION -->
+    <section class="section news-section" id="news">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">最新资讯</span>
+          <h2 class="section-title">考公动态</h2>
+          <p class="section-subtitle">吉林省考最新消息与重要提醒</p>
+        </div>
+        <div class="news-grid">
+          <div class="news-card reveal">
+            <div class="news-card-body">
+              <span class="news-tag"><i class="fa-regular fa-clock"></i> 预计</span>
+              <h4>2027 年吉林省考招录公告</h4>
+              <p>预计 2027 年 1-2 月发布招录公告，请密切关注吉林省公务员考试网。</p>
+              <a href="http://www.jlgwyks.cn/" target="_blank" class="news-link">
+                查看官网 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="news-card reveal">
+            <div class="news-card-body">
+              <span class="news-tag"><i class="fa-regular fa-calendar"></i> 时间</span>
+              <h4>笔试时间安排（参考往年）</h4>
+              <p>吉林省考通常参加多省联考，笔试一般在 3 月下旬进行，2 月报名。</p>
+              <a href="#tab-plan" class="news-link">
+                查看备考计划 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="news-card reveal">
+            <div class="news-card-body">
+              <span class="news-tag"><i class="fa-solid fa-message"></i> 提醒</span>
+              <h4>考试科目说明</h4>
+              <p>笔试科目为《行政职业能力测验》（行测）和《申论》两科，部分岗位加试专业科目。</p>
+              <a href="#tab-materials" class="news-link">
+                查看资料 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /tab-home -->
+
+  <!-- ===== TAB: 打卡 ===== -->
+  <div class="tab-panel" id="tab-checkin">
+    <section class="section checkin-section" id="checkin-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">每日打卡</span>
+          <h2 class="section-title">学习进度追踪</h2>
+          <p class="section-subtitle">记录每一天的努力，坚持就是胜利</p>
+        </div>
+        <div class="checkin-grid reveal">
+          <div class="checkin-card">
+            <h3><i class="fa-solid fa-fire" style="color:var(--color-primary)"></i> 今日打卡</h3>
+            <button class="checkin-btn todo" id="checkin-btn">🔥 今日打卡学习</button>
+            <div class="checkin-stats">
+              <div>
+                <span class="stat-number" id="checkin-streak">0</span>
+                <span class="stat-label">连续天数</span>
+              </div>
+              <div>
+                <span class="stat-number" id="checkin-total">0</span>
+                <span class="stat-label">总打卡</span>
+              </div>
+              <div>
+                <span class="stat-number" id="checkin-month">0</span>
+                <span class="stat-label">本月</span>
+              </div>
+            </div>
+          </div>
+          <div class="checkin-card checkin-calendar">
+            <h4 id="cal-title"></h4>
+            <div class="calendar-grid" id="calendar-grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-checkin -->
+
+  <!-- ===== TAB: 番茄钟 ===== -->
+  <div class="tab-panel" id="tab-timer">
+    <section class="section timer-section" id="timer-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">番茄钟</span>
+          <h2 class="section-title">专注学习计时器</h2>
+          <p class="section-subtitle">25分钟专注 + 5分钟休息，高效备考</p>
+        </div>
+        <div class="timer-container reveal">
+          <div class="timer-mode-tabs">
+            <button class="timer-mode-btn active" data-mode="focus">
+              <i class="fa-solid fa-book-open"></i> 专注学习
+            </button>
+            <button class="timer-mode-btn" data-mode="break">
+              <i class="fa-solid fa-mug-hot"></i> 休息
+            </button>
+          </div>
+          <div class="timer-circle">
+            <svg viewBox="0 0 260 260">
+              <defs>
+                <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#C41E24" />
+                  <stop offset="100%" stop-color="#E83A3A" />
+                </linearGradient>
+              </defs>
+              <circle class="bg-circle" cx="130" cy="130" r="120" />
+              <circle class="progress-circle" id="timer-circle" cx="130" cy="130" r="120" />
+            </svg>
+            <div class="timer-display">
+              <div class="time-text" id="timer-display">25:00</div>
+              <div class="timer-label" id="timer-label">专注学习</div>
+            </div>
+          </div>
+          <div class="timer-controls">
+            <button class="timer-ctrl-btn" id="timer-reset" title="重置">
+              <i class="fa-solid fa-rotate-left"></i>
+            </button>
+            <button class="timer-ctrl-btn primary" id="timer-start" title="开始/暂停">
+              <i class="fa-solid fa-play"></i>
+            </button>
+            <button class="timer-ctrl-btn" id="timer-skip" title="跳过" style="display:none"></button>
+          </div>
+          <div class="timer-sessions">
+            今日已完成 <strong id="timer-sessions">0</strong> 个番茄钟 🍅
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-timer -->
+
+  <!-- ===== TAB: 刷题 ===== -->
+  <div class="tab-panel" id="tab-quiz">
+    <section class="section quiz-section" id="quiz-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">在线刷题</span>
+          <h2 class="section-title">行测模拟练习</h2>
+          <p class="section-subtitle">随机抽取行测真题，练完看解析，实时计分</p>
+        </div>
+        <div class="quiz-container reveal" id="quiz-container"></div>
+      </div>
+    </section>
+  </div><!-- /tab-quiz -->
+
+  <!-- ===== TAB: 错题本 ===== -->
+  <div class="tab-panel" id="tab-wrongbook">
+    <section class="section wrongbook-section" id="wrongbook-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">错题本</span>
+          <h2 class="section-title">错题本 &amp; 数据分析</h2>
+          <p class="section-subtitle">追踪错题，精准提分</p>
+        </div>
+        <div class="wrongbook-stats reveal" id="wrongbook-stats">
+          <div class="wrong-stat-card">
+            <span class="wrong-stat-number" id="wrong-total">0</span>
+            <span class="wrong-stat-label">总做题数</span>
+          </div>
+          <div class="wrong-stat-card">
+            <span class="wrong-stat-number" id="wrong-wrong">0</span>
+            <span class="wrong-stat-label">总错题数</span>
+          </div>
+          <div class="wrong-stat-card">
+            <span class="wrong-stat-number" id="wrong-accuracy">0%</span>
+            <span class="wrong-stat-label">总正确率</span>
+          </div>
+        </div>
+        <div class="analysis-section reveal" id="analysis-section">
+          <h3 class="analysis-title">各模块正确率</h3>
+          <div class="analysis-chart" id="analysis-chart">
+            <!-- 柱状图将由 JS 动态渲染 -->
+          </div>
+          <div class="analysis-suggestion" id="analysis-suggestion">
+            <!-- 建议将由 JS 动态生成 -->
+          </div>
+        </div>
+        <div class="wrong-list reveal" id="wrong-list">
+          <!-- 错题列表将由 JS 动态渲染 -->
+        </div>
+        <div class="wrong-empty" id="wrong-empty">
+          <i class="fa-regular fa-face-smile"></i>
+          <p>还没有错题，继续加油！</p>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-wrongbook -->
+
+  <!-- ===== TAB: 每日一题 ===== -->
+  <div class="tab-panel" id="tab-daily">
+    <section class="section daily-section" id="daily-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">每日一题</span>
+          <h2 class="section-title">考点卡片</h2>
+          <p class="section-subtitle">每天一个考公知识点，碎片时间也能学</p>
+        </div>
+        <div class="daily-card reveal" id="daily-container"></div>
+      </div>
+    </section>
+  </div><!-- /tab-daily -->
+
+  <!-- ===== TAB: 资料 ===== -->
+  <div class="tab-panel" id="tab-materials">
+    <section class="section materials-section" id="materials">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">学习资料</span>
+          <h2 class="section-title">备考资源库</h2>
+          <p class="section-subtitle">系统化学习资料，覆盖各科目核心内容</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs reveal">
+          <button class="tab-btn active" data-tab="tab-xingce">
+            <i class="fa-solid fa-calculator"></i> 行测
+          </button>
+          <button class="tab-btn" data-tab="tab-shenlun">
+            <i class="fa-solid fa-pen"></i> 申论
+          </button>
+          <button class="tab-btn" data-tab="tab-interview">
+            <i class="fa-solid fa-microphone"></i> 面试
+          </button>
+          <button class="tab-btn" data-tab="tab-questions">
+            <i class="fa-solid fa-file-lines"></i> 真题题库
+          </button>
+        </div>
+
+        <!-- Tab: 行测 -->
+        <div class="tab-content active" id="tab-xingce">
+          <div class="materials-grid">
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-language"></i></div>
+              <h4>言语理解与表达</h4>
+              <p>阅读理解、逻辑填空、语句表达等题型技巧。重点训练片段阅读和逻辑填空。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">逻辑填空</span>
+                <span class="mat-tag">阅读理解</span>
+                <span class="mat-tag">语句排序</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-brain"></i></div>
+              <h4>判断推理</h4>
+              <p>图形推理、定义判断、类比推理、逻辑判断四大题型系统学习。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">图形推理</span>
+                <span class="mat-tag">逻辑判断</span>
+                <span class="mat-tag">定义判断</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h4>资料分析</h4>
+              <p>增长率、比重、倍数等核心概念，速算技巧与估算方法。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">速算技巧</span>
+                <span class="mat-tag">增长率</span>
+                <span class="mat-tag">比重分析</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-cubes"></i></div>
+              <h4>数量关系</h4>
+              <p>工程问题、行程问题、排列组合、概率等高频考点。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">工程问题</span>
+                <span class="mat-tag">行程问题</span>
+                <span class="mat-tag">排列组合</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-lightbulb"></i></div>
+              <h4>常识判断</h4>
+              <p>政治、法律、经济、人文、科技、地理等常识积累。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">时政热点</span>
+                <span class="mat-tag">法律常识</span>
+                <span class="mat-tag">人文历史</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-rocket"></i></div>
+              <h4>行测整体提分策略</h4>
+              <p>五大模块时间分配建议，做题顺序策略，考前冲刺方案。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">做题顺序</span>
+                <span class="mat-tag">时间管理</span>
+                <span class="mat-tag">冲刺策略</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看详情 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: 申论 -->
+        <div class="tab-content" id="tab-shenlun">
+          <div class="materials-grid">
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-file-lines"></i></div>
+              <h4>归纳概括题</h4>
+              <p>提炼材料核心信息，准确归纳要点。基础题型，必须掌握。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">要点提炼</span>
+                <span class="mat-tag">归纳总结</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-list-check"></i></div>
+              <h4>综合分析题</h4>
+              <p>分析问题原因、影响、对策，展现深度思考能力。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">原因分析</span>
+                <span class="mat-tag">影响分析</span>
+                <span class="mat-tag">对策建议</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-pen-fancy"></i></div>
+              <h4>大作文写作</h4>
+              <p>议论文写作技巧，论点论据论证，申论高分范文。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">议论文</span>
+                <span class="mat-tag">范文</span>
+                <span class="mat-tag">论证方法</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
+              <h4>热点话题汇总</h4>
+              <p>乡村振兴、共同富裕、数字经济、生态环保、基层治理等热点素材。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">乡村振兴</span>
+                <span class="mat-tag">数字经济</span>
+                <span class="mat-tag">基层治理</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看热点 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <h4>公文写作</h4>
+              <p>通知、报告、讲话稿、倡议书等公文格式与写作要点。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">公文格式</span>
+                <span class="mat-tag">工作报告</span>
+                <span class="mat-tag">讲话稿</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <h4>申论提分要点</h4>
+              <p>卷面规范、时间分配、材料阅读技巧、高分作答框架。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">卷面规范</span>
+                <span class="mat-tag">作答框架</span>
+                <span class="mat-tag">材料阅读</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看详情 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: 面试 -->
+        <div class="tab-content" id="tab-interview">
+          <div class="materials-grid">
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-people-group"></i></div>
+              <h4>结构化面试概述</h4>
+              <p>吉林省考面试以结构化面试为主，了解面试流程、评分标准。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">结构化面试</span>
+                <span class="mat-tag">评分标准</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-lightbulb"></i></div>
+              <h4>综合分析类题型</h4>
+              <p>社会现象类、哲理观点类、政策措施类综合分析题答题思路。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">社会现象</span>
+                <span class="mat-tag">观点分析</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-handshake"></i></div>
+              <h4>人际沟通与应急应变</h4>
+              <p>人际关系处理、突发事件应对、情景模拟等题型。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">人际关系</span>
+                <span class="mat-tag">应急应变</span>
+                <span class="mat-tag">情景模拟</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-calendar"></i></div>
+              <h4>计划组织协调类</h4>
+              <p>调研、宣传、培训、会议组织等计划组织类题目。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">调研类</span>
+                <span class="mat-tag">宣传类</span>
+                <span class="mat-tag">活动组织</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-video"></i></div>
+              <h4>面试礼仪与表达</h4>
+              <p>着装规范、仪态举止、语音语调、时间控制等实战技巧。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">着装礼仪</span>
+                <span class="mat-tag">表达技巧</span>
+              </div>
+              <a href="#links" class="mat-link">
+                相关资源 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-list"></i></div>
+              <h4>面试真题练习</h4>
+              <p>历年吉林省考面试真题汇总，实战演练提升面试能力。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">历年真题</span>
+                <span class="mat-tag">实战演练</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看真题 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: 真题题库 -->
+        <div class="tab-content" id="tab-questions">
+          <div class="materials-grid">
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+              <h4>2024 年吉林省考真题</h4>
+              <p>2024 年吉林省公务员考试行测+申论真题及答案解析。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">2024真题</span>
+                <span class="mat-tag">答案解析</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看真题 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+              <h4>2025 年吉林省考真题</h4>
+              <p>2025 年吉林省公务员考试最新真题回忆版及解析。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">2025真题</span>
+                <span class="mat-tag">回忆版</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看真题 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+              <h4>2026 年吉林省考真题</h4>
+              <p>2026 年吉林省考最新真题汇总，把握命题趋势。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">2026真题</span>
+                <span class="mat-tag">命题趋势</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看真题 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-layer-group"></i></div>
+              <h4>多省联考真题汇总</h4>
+              <p>吉林省考参加多省联考，联考真题具有极高参考价值。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">联考真题</span>
+                <span class="mat-tag">对比练习</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看真题 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+              <h4>模拟冲刺卷</h4>
+              <p>高质量模拟题，考前冲刺实战演练，查漏补缺。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">模拟卷</span>
+                <span class="mat-tag">冲刺</span>
+              </div>
+              <a href="#links" class="mat-link">
+                开始练习 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="material-card reveal">
+              <div class="mat-icon"><i class="fa-solid fa-chart-simple"></i></div>
+              <h4>错题本 &amp; 刷题技巧</h4>
+              <p>科学刷题方法、错题整理技巧、提分效率最大化。</p>
+              <div class="mat-tags">
+                <span class="mat-tag">刷题方法</span>
+                <span class="mat-tag">错题管理</span>
+                <span class="mat-tag">效率提升</span>
+              </div>
+              <a href="#links" class="mat-link">
+                查看详情 <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-materials -->
+
+  <!-- ===== TAB: 计划 ===== -->
+  <div class="tab-panel" id="tab-plan">
+    <section class="section timeline-section" id="timeline">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">备考计划</span>
+          <h2 class="section-title">上岸时间线</h2>
+          <p class="section-subtitle">科学规划备考节奏，稳步推进复习进度</p>
+        </div>
+        <div class="timeline">
+          <!-- Phase 1 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-phase">第一阶段</div>
+              <div class="timeline-date">现在 — 2026 年 8 月</div>
+              <h4>基础夯实阶段</h4>
+              <p>系统学习各科目基础知识，建立完整的知识框架。</p>
+              <ul>
+                <li>行测：五大题型逐一突破，掌握基本解题方法</li>
+                <li>申论：了解题型特点，积累热点素材</li>
+                <li>每天学习 3-4 小时，周末集中突破</li>
+              </ul>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-phase">第二阶段</div>
+              <div class="timeline-date">2026 年 9 月 — 12 月</div>
+              <h4>强化提升阶段</h4>
+              <p>分模块专项突破，大量刷题，查漏补缺。</p>
+              <ul>
+                <li>行测：专项题库训练，限时练习，提速提分</li>
+                <li>申论：每周 2-3 篇大作文，精批精改</li>
+                <li>开始做真题套卷，分析命题规律</li>
+              </ul>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-phase">第三阶段</div>
+              <div class="timeline-date">2027 年 1 月 — 2 月</div>
+              <h4>冲刺模考阶段</h4>
+              <p>全真模拟，调整状态，针对性突破薄弱环节。</p>
+              <ul>
+                <li>每周 3-4 套全真模拟，严格计时</li>
+                <li>重点关注错题，针对性补强</li>
+                <li>报名缴费，确认考场信息</li>
+              </ul>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <!-- Phase 4 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-phase">第四阶段</div>
+              <div class="timeline-date">2027 年 3 月</div>
+              <h4>笔试决战</h4>
+              <p>调整心态，从容应考，发挥最佳水平。</p>
+              <ul>
+                <li>考前一周调整作息，保持良好状态</li>
+                <li>准备考试用品（准考证、身份证等）</li>
+                <li>自信应考，沉着答题</li>
+              </ul>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+
+          <!-- Phase 5 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <div class="timeline-phase">第五阶段</div>
+              <div class="timeline-date">2027 年 4 月 — 5 月</div>
+              <h4>面试准备</h4>
+              <p>笔试通过后全力备战面试，一举上岸。</p>
+              <ul>
+                <li>结构化面试系统学习</li>
+                <li>模拟面试实战演练</li>
+                <li>关注面试公告和时间安排</li>
+              </ul>
+            </div>
+            <div class="timeline-dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-plan -->
+
+  <!-- ===== TAB: 链接 ===== -->
+  <div class="tab-panel" id="tab-links">
+    <section class="section links-section" id="links">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">官方链接</span>
+          <h2 class="section-title">权威渠道</h2>
+          <p class="section-subtitle">吉林省考相关官方网站与信息平台</p>
+        </div>
+        <div class="links-grid">
+          <a href="http://www.jlgwyks.cn/" target="_blank" class="link-card reveal">
+            <div class="link-icon"><i class="fa-solid fa-gavel"></i></div>
+            <div class="link-info">
+              <h4>吉林省公务员考试网</h4>
+              <p>招考公告、报名入口、成绩查询</p>
+            </div>
+            <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
           </a>
-          <a href="#links" class="btn btn-outline">
-            <i class="fa-solid fa-link"></i>
-            官方入口
+          <a href="http://hrss.jl.gov.cn/" target="_blank" class="link-card reveal">
+            <div class="link-icon"><i class="fa-solid fa-building"></i></div>
+            <div class="link-info">
+              <h4>吉林省人力资源和社会保障厅</h4>
+              <p>人事考试政策、通知公告</p>
+            </div>
+            <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="http://www.scs.gov.cn/" target="_blank" class="link-card reveal">
+            <div class="link-icon"><i class="fa-solid fa-flag"></i></div>
+            <div class="link-info">
+              <h4>国家公务员局</h4>
+              <p>国考信息、公务员政策法规</p>
+            </div>
+            <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="https://www.offcn.com/" target="_blank" class="link-card reveal">
+            <div class="link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="link-info">
+              <h4>中公教育</h4>
+              <p>考公培训、真题、备考资料</p>
+            </div>
+            <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="https://www.jl.gov.cn/" target="_blank" class="link-card reveal">
+            <div class="link-icon"><i class="fa-solid fa-city"></i></div>
+            <div class="link-info">
+              <h4>吉林省人民政府</h4>
+              <p>吉林省政策文件、政府工作报告</p>
+            </div>
+            <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+          </a>
+          <a href="https://www.xuexi.cn/" target="_blank" class="link-card reveal">
+            <div class="link-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="link-info">
+              <h4>学习强国</h4>
+              <p>时政学习、申论素材积累</p>
+            </div>
+            <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
           </a>
         </div>
       </div>
-      <div class="hero-countdown">
-        <div class="countdown-header">
-          <h3><i class="fa-solid fa-clock"></i> 距离 2027 吉林省考笔试</h3>
-          <p>预计 2027 年 3 月（以官方公告为准）</p>
-        </div>
-        <div class="countdown-grid">
-          <div class="countdown-item">
-            <span class="number" id="days">--</span>
-            <span class="label">天</span>
-          </div>
-          <div class="countdown-item">
-            <span class="number" id="hours">--</span>
-            <span class="label">时</span>
-          </div>
-          <div class="countdown-item">
-            <span class="number" id="minutes">--</span>
-            <span class="label">分</span>
-          </div>
-          <div class="countdown-item">
-            <span class="number" id="seconds">--</span>
-            <span class="label">秒</span>
-          </div>
-        </div>
-        <p class="countdown-motivation" id="countdown-msg">
-          "星光不负赶路人，时光不负有心人"
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div><!-- /tab-links -->
 
   <!-- ==========================================
-       QUICK LINKS
+       FLOATING TIMER
        ========================================== -->
-  <section class="section quick-links" id="quick-links">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">快捷入口</span>
-        <h2 class="section-title">一键直达</h2>
-        <p class="section-subtitle">快速访问备考所需的核心模块</p>
-      </div>
-      <div class="quick-links-grid">
-        <div class="quick-link-card reveal" data-target="#news">
-          <div class="icon-box"><i class="fa-solid fa-newspaper"></i></div>
-          <h3>最新资讯</h3>
-          <p>吉林省考公告、政策变化、考试动态实时汇总</p>
-        </div>
-        <div class="quick-link-card reveal" data-target="#materials">
-          <div class="icon-box"><i class="fa-solid fa-book"></i></div>
-          <h3>学习资料</h3>
-          <p>行测、申论、面试各科系统学习资源</p>
-        </div>
-        <div class="quick-link-card reveal" data-target="#timeline">
-          <div class="icon-box"><i class="fa-solid fa-calendar-check"></i></div>
-          <h3>备考计划</h3>
-          <p>分阶段备考时间线与每日学习建议</p>
-        </div>
-        <div class="quick-link-card reveal" data-target="#links">
-          <div class="icon-box"><i class="fa-solid fa-globe"></i></div>
-          <h3>官方链接</h3>
-          <p>吉林省考官网、人社局等权威渠道</p>
-        </div>
-      </div>
+  <div class="floating-timer" id="floatingTimer">
+    <div class="ft-icon"><i class="fa-solid fa-clock"></i></div>
+    <div class="ft-info">
+      <div class="ft-time" id="ft-time">25:00</div>
+      <div class="ft-label" id="ft-label">专注学习</div>
     </div>
-  </section>
-
-  <!-- ==========================================
-       NEWS SECTION
-       ========================================== -->
-  <section class="section news-section" id="news">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">最新资讯</span>
-        <h2 class="section-title">考公动态</h2>
-        <p class="section-subtitle">吉林省考最新消息与重要提醒</p>
-      </div>
-      <div class="news-grid">
-        <div class="news-card reveal">
-          <div class="news-card-body">
-            <span class="news-tag"><i class="fa-regular fa-clock"></i> 预计</span>
-            <h4>2027 年吉林省考招录公告</h4>
-            <p>预计 2027 年 1-2 月发布招录公告，请密切关注吉林省公务员考试网。</p>
-            <a href="http://www.jlgwyks.cn/" target="_blank" class="news-link">
-              查看官网 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        <div class="news-card reveal">
-          <div class="news-card-body">
-            <span class="news-tag"><i class="fa-regular fa-calendar"></i> 时间</span>
-            <h4>笔试时间安排（参考往年）</h4>
-            <p>吉林省考通常参加多省联考，笔试一般在 3 月下旬进行，2 月报名。</p>
-            <a href="#timeline" class="news-link">
-              查看备考计划 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-        <div class="news-card reveal">
-          <div class="news-card-body">
-            <span class="news-tag"><i class="fa-solid fa-message"></i> 提醒</span>
-            <h4>考试科目说明</h4>
-            <p>笔试科目为《行政职业能力测验》（行测）和《申论》两科，部分岗位加试专业科目。</p>
-            <a href="#materials" class="news-link">
-              查看资料 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="ft-actions">
+      <button class="ft-btn" id="ft-toggle" title="暂停/继续"><i class="fa-solid fa-pause"></i></button>
+      <button class="ft-btn ft-close" id="ft-close" title="关闭浮窗"><i class="fa-solid fa-xmark"></i></button>
     </div>
-  </section>
-
-  <!-- ==========================================
-       MATERIALS / STUDY RESOURCES
-       ========================================== -->
-  <section class="section materials-section" id="materials">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">学习资料</span>
-        <h2 class="section-title">备考资源库</h2>
-        <p class="section-subtitle">系统化学习资料，覆盖各科目核心内容</p>
-      </div>
-
-      <!-- Tabs -->
-      <div class="tabs reveal">
-        <button class="tab-btn active" data-tab="tab-xingce">
-          <i class="fa-solid fa-calculator"></i> 行测
-        </button>
-        <button class="tab-btn" data-tab="tab-shenlun">
-          <i class="fa-solid fa-pen"></i> 申论
-        </button>
-        <button class="tab-btn" data-tab="tab-interview">
-          <i class="fa-solid fa-microphone"></i> 面试
-        </button>
-        <button class="tab-btn" data-tab="tab-questions">
-          <i class="fa-solid fa-file-lines"></i> 真题题库
-        </button>
-      </div>
-
-      <!-- Tab: 行测 -->
-      <div class="tab-content active" id="tab-xingce">
-        <div class="materials-grid">
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-language"></i></div>
-            <h4>言语理解与表达</h4>
-            <p>阅读理解、逻辑填空、语句表达等题型技巧。重点训练片段阅读和逻辑填空。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">逻辑填空</span>
-              <span class="mat-tag">阅读理解</span>
-              <span class="mat-tag">语句排序</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-brain"></i></div>
-            <h4>判断推理</h4>
-            <p>图形推理、定义判断、类比推理、逻辑判断四大题型系统学习。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">图形推理</span>
-              <span class="mat-tag">逻辑判断</span>
-              <span class="mat-tag">定义判断</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-chart-line"></i></div>
-            <h4>资料分析</h4>
-            <p>增长率、比重、倍数等核心概念，速算技巧与估算方法。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">速算技巧</span>
-              <span class="mat-tag">增长率</span>
-              <span class="mat-tag">比重分析</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-cubes"></i></div>
-            <h4>数量关系</h4>
-            <p>工程问题、行程问题、排列组合、概率等高频考点。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">工程问题</span>
-              <span class="mat-tag">行程问题</span>
-              <span class="mat-tag">排列组合</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-lightbulb"></i></div>
-            <h4>常识判断</h4>
-            <p>政治、法律、经济、人文、科技、地理等常识积累。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">时政热点</span>
-              <span class="mat-tag">法律常识</span>
-              <span class="mat-tag">人文历史</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-rocket"></i></div>
-            <h4>行测整体提分策略</h4>
-            <p>五大模块时间分配建议，做题顺序策略，考前冲刺方案。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">做题顺序</span>
-              <span class="mat-tag">时间管理</span>
-              <span class="mat-tag">冲刺策略</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看详情 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab: 申论 -->
-      <div class="tab-content" id="tab-shenlun">
-        <div class="materials-grid">
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-file-lines"></i></div>
-            <h4>归纳概括题</h4>
-            <p>提炼材料核心信息，准确归纳要点。基础题型，必须掌握。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">要点提炼</span>
-              <span class="mat-tag">归纳总结</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-list-check"></i></div>
-            <h4>综合分析题</h4>
-            <p>分析问题原因、影响、对策，展现深度思考能力。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">原因分析</span>
-              <span class="mat-tag">影响分析</span>
-              <span class="mat-tag">对策建议</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-pen-fancy"></i></div>
-            <h4>大作文写作</h4>
-            <p>议论文写作技巧，论点论据论证，申论高分范文。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">议论文</span>
-              <span class="mat-tag">范文</span>
-              <span class="mat-tag">论证方法</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-fire-flame-curved"></i></div>
-            <h4>热点话题汇总</h4>
-            <p>乡村振兴、共同富裕、数字经济、生态环保、基层治理等热点素材。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">乡村振兴</span>
-              <span class="mat-tag">数字经济</span>
-              <span class="mat-tag">基层治理</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看热点 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <h4>公文写作</h4>
-            <p>通知、报告、讲话稿、倡议书等公文格式与写作要点。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">公文格式</span>
-              <span class="mat-tag">工作报告</span>
-              <span class="mat-tag">讲话稿</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-layer-group"></i></div>
-            <h4>申论提分要点</h4>
-            <p>卷面规范、时间分配、材料阅读技巧、高分作答框架。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">卷面规范</span>
-              <span class="mat-tag">作答框架</span>
-              <span class="mat-tag">材料阅读</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看详情 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab: 面试 -->
-      <div class="tab-content" id="tab-interview">
-        <div class="materials-grid">
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-people-group"></i></div>
-            <h4>结构化面试概述</h4>
-            <p>吉林省考面试以结构化面试为主，了解面试流程、评分标准。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">结构化面试</span>
-              <span class="mat-tag">评分标准</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-lightbulb"></i></div>
-            <h4>综合分析类题型</h4>
-            <p>社会现象类、哲理观点类、政策措施类综合分析题答题思路。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">社会现象</span>
-              <span class="mat-tag">观点分析</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-handshake"></i></div>
-            <h4>人际沟通与应急应变</h4>
-            <p>人际关系处理、突发事件应对、情景模拟等题型。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">人际关系</span>
-              <span class="mat-tag">应急应变</span>
-              <span class="mat-tag">情景模拟</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-calendar"></i></div>
-            <h4>计划组织协调类</h4>
-            <p>调研、宣传、培训、会议组织等计划组织类题目。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">调研类</span>
-              <span class="mat-tag">宣传类</span>
-              <span class="mat-tag">活动组织</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-video"></i></div>
-            <h4>面试礼仪与表达</h4>
-            <p>着装规范、仪态举止、语音语调、时间控制等实战技巧。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">着装礼仪</span>
-              <span class="mat-tag">表达技巧</span>
-            </div>
-            <a href="#links" class="mat-link">
-              相关资源 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-list"></i></div>
-            <h4>面试真题练习</h4>
-            <p>历年吉林省考面试真题汇总，实战演练提升面试能力。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">历年真题</span>
-              <span class="mat-tag">实战演练</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看真题 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tab: 真题题库 -->
-      <div class="tab-content" id="tab-questions">
-        <div class="materials-grid">
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h4>2024 年吉林省考真题</h4>
-            <p>2024 年吉林省公务员考试行测+申论真题及答案解析。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">2024真题</span>
-              <span class="mat-tag">答案解析</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看真题 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h4>2025 年吉林省考真题</h4>
-            <p>2025 年吉林省公务员考试最新真题回忆版及解析。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">2025真题</span>
-              <span class="mat-tag">回忆版</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看真题 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h4>2026 年吉林省考真题</h4>
-            <p>2026 年吉林省考最新真题汇总，把握命题趋势。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">2026真题</span>
-              <span class="mat-tag">命题趋势</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看真题 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-layer-group"></i></div>
-            <h4>多省联考真题汇总</h4>
-            <p>吉林省考参加多省联考，联考真题具有极高参考价值。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">联考真题</span>
-              <span class="mat-tag">对比练习</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看真题 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-pen-ruler"></i></div>
-            <h4>模拟冲刺卷</h4>
-            <p>高质量模拟题，考前冲刺实战演练，查漏补缺。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">模拟卷</span>
-              <span class="mat-tag">冲刺</span>
-            </div>
-            <a href="#links" class="mat-link">
-              开始练习 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-          <div class="material-card reveal">
-            <div class="mat-icon"><i class="fa-solid fa-chart-simple"></i></div>
-            <h4>错题本 & 刷题技巧</h4>
-            <p>科学刷题方法、错题整理技巧、提分效率最大化。</p>
-            <div class="mat-tags">
-              <span class="mat-tag">刷题方法</span>
-              <span class="mat-tag">错题管理</span>
-              <span class="mat-tag">效率提升</span>
-            </div>
-            <a href="#links" class="mat-link">
-              查看详情 <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       TIMELINE - STUDY PLAN
-       ========================================== -->
-  <section class="section timeline-section" id="timeline">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">备考计划</span>
-        <h2 class="section-title">上岸时间线</h2>
-        <p class="section-subtitle">科学规划备考节奏，稳步推进复习进度</p>
-      </div>
-      <div class="timeline">
-        <!-- Phase 1 -->
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <div class="timeline-phase">第一阶段</div>
-            <div class="timeline-date">现在 — 2026 年 8 月</div>
-            <h4>基础夯实阶段</h4>
-            <p>系统学习各科目基础知识，建立完整的知识框架。</p>
-            <ul>
-              <li>行测：五大题型逐一突破，掌握基本解题方法</li>
-              <li>申论：了解题型特点，积累热点素材</li>
-              <li>每天学习 3-4 小时，周末集中突破</li>
-            </ul>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Phase 2 -->
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <div class="timeline-phase">第二阶段</div>
-            <div class="timeline-date">2026 年 9 月 — 12 月</div>
-            <h4>强化提升阶段</h4>
-            <p>分模块专项突破，大量刷题，查漏补缺。</p>
-            <ul>
-              <li>行测：专项题库训练，限时练习，提速提分</li>
-              <li>申论：每周 2-3 篇大作文，精批精改</li>
-              <li>开始做真题套卷，分析命题规律</li>
-            </ul>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Phase 3 -->
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <div class="timeline-phase">第三阶段</div>
-            <div class="timeline-date">2027 年 1 月 — 2 月</div>
-            <h4>冲刺模考阶段</h4>
-            <p>全真模拟，调整状态，针对性突破薄弱环节。</p>
-            <ul>
-              <li>每周 3-4 套全真模拟，严格计时</li>
-              <li>重点关注错题，针对性补强</li>
-              <li>报名缴费，确认考场信息</li>
-            </ul>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Phase 4 -->
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <div class="timeline-phase">第四阶段</div>
-            <div class="timeline-date">2027 年 3 月</div>
-            <h4>笔试决战</h4>
-            <p>调整心态，从容应考，发挥最佳水平。</p>
-            <ul>
-              <li>考前一周调整作息，保持良好状态</li>
-              <li>准备考试用品（准考证、身份证等）</li>
-              <li>自信应考，沉着答题</li>
-            </ul>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-
-        <!-- Phase 5 -->
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <div class="timeline-phase">第五阶段</div>
-            <div class="timeline-date">2027 年 4 月 — 5 月</div>
-            <h4>面试准备</h4>
-            <p>笔试通过后全力备战面试，一举上岸。</p>
-            <ul>
-              <li>结构化面试系统学习</li>
-              <li>模拟面试实战演练</li>
-              <li>关注面试公告和时间安排</li>
-            </ul>
-          </div>
-          <div class="timeline-dot"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       OFFICIAL LINKS
-       ========================================== -->
-  <section class="section links-section" id="links">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">官方链接</span>
-        <h2 class="section-title">权威渠道</h2>
-        <p class="section-subtitle">吉林省考相关官方网站与信息平台</p>
-      </div>
-      <div class="links-grid">
-        <a href="http://www.jlgwyks.cn/" target="_blank" class="link-card reveal">
-          <div class="link-icon"><i class="fa-solid fa-gavel"></i></div>
-          <div class="link-info">
-            <h4>吉林省公务员考试网</h4>
-            <p>招考公告、报名入口、成绩查询</p>
-          </div>
-          <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-        <a href="http://hrss.jl.gov.cn/" target="_blank" class="link-card reveal">
-          <div class="link-icon"><i class="fa-solid fa-building"></i></div>
-          <div class="link-info">
-            <h4>吉林省人力资源和社会保障厅</h4>
-            <p>人事考试政策、通知公告</p>
-          </div>
-          <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-        <a href="http://www.scs.gov.cn/" target="_blank" class="link-card reveal">
-          <div class="link-icon"><i class="fa-solid fa-flag"></i></div>
-          <div class="link-info">
-            <h4>国家公务员局</h4>
-            <p>国考信息、公务员政策法规</p>
-          </div>
-          <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-        <a href="https://www.offcn.com/" target="_blank" class="link-card reveal">
-          <div class="link-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <div class="link-info">
-            <h4>中公教育</h4>
-            <p>考公培训、真题、备考资料</p>
-          </div>
-          <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-        <a href="https://www.jl.gov.cn/" target="_blank" class="link-card reveal">
-          <div class="link-icon"><i class="fa-solid fa-city"></i></div>
-          <div class="link-info">
-            <h4>吉林省人民政府</h4>
-            <p>吉林省政策文件、政府工作报告</p>
-          </div>
-          <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-        <a href="https://www.xuexi.cn/" target="_blank" class="link-card reveal">
-          <div class="link-icon"><i class="fa-solid fa-book-open"></i></div>
-          <div class="link-info">
-            <h4>学习强国</h4>
-            <p>时政学习、申论素材积累</p>
-          </div>
-          <span class="link-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       QUIZ SECTION - 在线刷题
-       ========================================== -->
-  <section class="section quiz-section" id="quiz-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">在线刷题</span>
-        <h2 class="section-title">行测模拟练习</h2>
-        <p class="section-subtitle">随机抽取行测真题，练完看解析，实时计分</p>
-      </div>
-      <div class="quiz-container reveal" id="quiz-container"></div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       CHECK-IN SECTION - 每日打卡
-       ========================================== -->
-  <section class="section checkin-section" id="checkin-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">每日打卡</span>
-        <h2 class="section-title">学习进度追踪</h2>
-        <p class="section-subtitle">记录每一天的努力，坚持就是胜利</p>
-      </div>
-      <div class="checkin-grid reveal">
-        <div class="checkin-card">
-          <h3><i class="fa-solid fa-fire" style="color:var(--color-primary)"></i> 今日打卡</h3>
-          <button class="checkin-btn todo" id="checkin-btn">🔥 今日打卡学习</button>
-          <div class="checkin-stats">
-            <div>
-              <span class="stat-number" id="checkin-streak">0</span>
-              <span class="stat-label">连续天数</span>
-            </div>
-            <div>
-              <span class="stat-number" id="checkin-total">0</span>
-              <span class="stat-label">总打卡</span>
-            </div>
-            <div>
-              <span class="stat-number" id="checkin-month">0</span>
-              <span class="stat-label">本月</span>
-            </div>
-          </div>
-        </div>
-        <div class="checkin-card checkin-calendar">
-          <h4 id="cal-title"></h4>
-          <div class="calendar-grid" id="calendar-grid"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       DAILY QUESTION SECTION - 每日一题
-       ========================================== -->
-  <section class="section daily-section" id="daily-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">每日一题</span>
-        <h2 class="section-title">考点卡片</h2>
-        <p class="section-subtitle">每天一个考公知识点，碎片时间也能学</p>
-      </div>
-      <div class="daily-card reveal" id="daily-container"></div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       TIMER SECTION - 番茄钟
-       ========================================== -->
-  <section class="section timer-section" id="timer-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-tag">番茄钟</span>
-        <h2 class="section-title">专注学习计时器</h2>
-        <p class="section-subtitle">25分钟专注 + 5分钟休息，高效备考</p>
-      </div>
-      <div class="timer-container reveal">
-        <div class="timer-mode-tabs">
-          <button class="timer-mode-btn active" data-mode="focus">
-            <i class="fa-solid fa-book-open"></i> 专注学习
-          </button>
-          <button class="timer-mode-btn" data-mode="break">
-            <i class="fa-solid fa-mug-hot"></i> 休息
-          </button>
-        </div>
-        <div class="timer-circle">
-          <svg viewBox="0 0 260 260">
-            <defs>
-              <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#C41E24" />
-                <stop offset="100%" stop-color="#E83A3A" />
-              </linearGradient>
-            </defs>
-            <circle class="bg-circle" cx="130" cy="130" r="120" />
-            <circle class="progress-circle" id="timer-circle" cx="130" cy="130" r="120" />
-          </svg>
-          <div class="timer-display">
-            <div class="time-text" id="timer-display">25:00</div>
-            <div class="timer-label" id="timer-label">专注学习</div>
-          </div>
-        </div>
-        <div class="timer-controls">
-          <button class="timer-ctrl-btn" id="timer-reset" title="重置">
-            <i class="fa-solid fa-rotate-left"></i>
-          </button>
-          <button class="timer-ctrl-btn primary" id="timer-start" title="开始/暂停">
-            <i class="fa-solid fa-play"></i>
-          </button>
-          <button class="timer-ctrl-btn" id="timer-skip" title="跳过" style="display:none"></button>
-        </div>
-        <div class="timer-sessions">
-          今日已完成 <strong id="timer-sessions">0</strong> 个番茄钟 🍅
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- ==========================================
        FOOTER
@@ -829,19 +908,19 @@
         <div class="reveal">
           <h4>快速导航</h4>
           <ul class="footer-links">
-            <li><a href="#hero">首页</a></li>
-            <li><a href="#quick-links">快捷入口</a></li>
-            <li><a href="#news">最新资讯</a></li>
-            <li><a href="#materials">学习资料</a></li>
+            <li><a href="#tab-home">首页</a></li>
+            <li><a href="#tab-home">快捷入口</a></li>
+            <li><a href="#tab-home">最新资讯</a></li>
+            <li><a href="#tab-materials">学习资料</a></li>
           </ul>
         </div>
         <div class="reveal">
           <h4>备考资源</h4>
           <ul class="footer-links">
-            <li><a href="#materials">行测学习</a></li>
-            <li><a href="#materials">申论学习</a></li>
-            <li><a href="#materials">面试辅导</a></li>
-            <li><a href="#timeline">备考计划</a></li>
+            <li><a href="#tab-materials">行测学习</a></li>
+            <li><a href="#tab-materials">申论学习</a></li>
+            <li><a href="#tab-materials">面试辅导</a></li>
+            <li><a href="#tab-plan">备考计划</a></li>
           </ul>
         </div>
         <div class="reveal">
