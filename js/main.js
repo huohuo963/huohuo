@@ -5,40 +5,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
   // ==========================================
-  // 1. COUNTDOWN TIMER - 2027 Jilin Exam
-  // ==========================================
-  // 吉林省考一般安排在每年3月下旬（以官方公告为准）
-  const examDate = new Date('2027-03-27T09:00:00').getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const diff = examDate - now;
-
-    if (diff <= 0) {
-      document.getElementById('days').textContent = '00';
-      document.getElementById('hours').textContent = '00';
-      document.getElementById('minutes').textContent = '00';
-      document.getElementById('seconds').textContent = '00';
-      document.getElementById('countdown-msg').textContent = '考试已经开始！加油！🔥';
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById('days').textContent = String(days).padStart(2, '0');
-    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-
-  // ==========================================
-  // 2. FLOATING PARTICLES (Hero Background)
+  // 1. FLOATING PARTICLES (Hero Background)
   // ==========================================
   const particlesContainer = document.querySelector('.hero-particles');
   if (particlesContainer) {
@@ -56,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ==========================================
-  // 3. NAVBAR SCROLL EFFECT
+  // 2. NAVBAR SCROLL EFFECT
   // ==========================================
   const navbar = document.querySelector('.navbar');
   const backToTop = document.querySelector('.back-to-top');
@@ -82,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ==========================================
-  // 4. MOBILE MENU TOGGLE
+  // 3. MOBILE MENU TOGGLE
   // ==========================================
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
@@ -103,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ==========================================
-  // 5. ACTIVE NAV LINK (based on scroll)
+  // 4. ACTIVE NAV LINK (based on scroll)
   // ==========================================
   function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
@@ -127,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ==========================================
-  // 6. SCROLL REVEAL ANIMATIONS
+  // 5. SCROLL REVEAL ANIMATIONS
   // ==========================================
   const revealElements = document.querySelectorAll('.reveal');
 
@@ -147,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ==========================================
-  // 7. TABS (Study Materials)
+  // 6. TABS (Study Materials)
   // ==========================================
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -171,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ==========================================
-  // 8. BACK TO TOP
+  // 7. BACK TO TOP
   // ==========================================
   if (backToTop) {
     backToTop.addEventListener('click', function() {
@@ -183,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // ==========================================
-  // 9. SMOOTH SCROLL FOR ALL ANCHOR LINKS
+  // 8. SMOOTH SCROLL FOR ALL ANCHOR LINKS
   // ==========================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -199,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // ==========================================
-  // 10. QUICK LINK CARDS CLICK
+  // 9. QUICK LINK CARDS CLICK
   // ==========================================
   document.querySelectorAll('.quick-link-card').forEach(card => {
     card.addEventListener('click', function() {
